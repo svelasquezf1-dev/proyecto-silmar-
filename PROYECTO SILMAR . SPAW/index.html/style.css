@@ -1,0 +1,560 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0b0c10;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #45a29e;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #66fcf1;
+    box-shadow: 0 0 10px rgba(102, 252, 241, 0.5);
+}
+
+body {
+    background: radial-gradient(circle at top left, rgba(102, 252, 241, 0.14), transparent 18%),
+                radial-gradient(circle at bottom right, rgba(255, 0, 60, 0.12), transparent 22%),
+                #0b0c10;
+    color: #c5c6c7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.background-layer {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.bg-item {
+    position: absolute;
+    width: 220px;
+    opacity: 0.18;
+    border-radius: 20px;
+    filter: saturate(1.4) blur(0.5px);
+    animation: float 16s ease-in-out infinite;
+}
+
+.bg-item.bg1 {
+    top: 5%;
+    left: 6%;
+    animation-duration: 20s;
+}
+
+.bg-item.bg2 {
+    top: 15%;
+    right: 5%;
+    animation-duration: 18s;
+}
+
+.bg-item.bg3 {
+    bottom: 10%;
+    left: 10%;
+    animation-duration: 22s;
+}
+
+.bg-item.bg4 {
+    bottom: 8%;
+    right: 12%;
+    animation-duration: 19s;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
+    100% { transform: translateY(0px) scale(1); }
+}
+
+/* Contenedores Principales */
+.container {
+    background: rgba(31, 40, 51, 0.95);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(69, 162, 158, 0.5);
+    text-align: center;
+    width: 100%;
+    max-width: 900px;
+    border: 2px solid #45a29e;
+    position: relative;
+    z-index: 1;
+}
+
+/* Ocultar secciones dinámicamente */
+.hidden {
+    display: none !important;
+}
+
+.glitch-text {
+    color: #66fcf1;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 5px rgba(102, 252, 241, 0.7);
+    letter-spacing: 2px;
+}
+
+/* Inputs del Login */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 15px;
+    background: #0b0c10;
+    border: 1px solid #45a29e;
+    color: #66fcf1;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+}
+
+input:focus {
+    box-shadow: 0 0 10px #66fcf1;
+}
+
+/* Botones Neón */
+.btn-neon {
+    padding: 15px;
+    background: transparent;
+    color: #66fcf1;
+    border: 2px solid #66fcf1;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn-neon:hover {
+    background: #66fcf1;
+    color: #0b0c10;
+    box-shadow: 0 0 15px #66fcf1;
+}
+
+.separator {
+    margin: 20px 0;
+    color: #888;
+    font-size: 12px;
+}
+
+/* Botones Redes Sociales */
+.social-login {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-social {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-social:hover {
+    transform: scale(1.1);
+}
+
+.fb { background: #1877F2; }
+.x { background: #000000; border: 1px solid #333; }
+.ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+
+/* CSS de los Productos */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+    align-items: stretch;
+}
+
+.product-card {
+    background: rgba(11, 12, 16, 0.92);
+    border: 1px solid #c5c6c7;
+    border-radius: 16px;
+    padding: 18px;
+    width: 100%;
+    min-height: 320px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card:hover {
+    border-color: #66fcf1;
+    box-shadow: 0 0 15px rgba(102, 252, 241, 0.4);
+    transform: translateY(-5px);
+}
+
+.product-img {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.btn-buy {
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    background: #45a29e;
+    border: none;
+    color: #0b0c10;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-buy:hover {
+    background: #66fcf1;
+}
+
+.btn-logout {
+    font-size: 12px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-color: #dc2743;
+    color: #dc2743;
+    background: transparent;
+}
+
+.btn-logout:hover {
+    background: #dc2743;
+    color: white;
+    box-shadow: 0 0 15px #dc2743;
+}
+
+.search-input {
+    width: 100%;
+    padding: 15px;
+    background: #0b0c10;
+    border: 1px solid #45a29e;
+    color: #66fcf1;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.search-input:focus {
+    box-shadow: 0 0 10px #66fcf1;
+}
+
+.most-viewed {
+    margin-top: 20px;
+}
+
+.most-viewed h2 {
+    text-align: center;
+    color: #66fcf1;
+    margin-bottom: 20px;
+}
+
+.store-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.cart-panel {
+    background: rgba(11, 12, 16, 0.9);
+    border: 1px solid #45a29e;
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.cart-header h2 {
+    margin: 0;
+    color: #66fcf1;
+    font-size: 18px;
+}
+
+.cart-items {
+    min-height: 80px;
+}
+
+.cart-list {
+    list-style: decimal;
+    padding-left: 18px;
+    margin: 0;
+    color: #c5c6c7;
+}
+
+.cart-list li {
+    margin-bottom: 8px;
+}
+
+.cart-total {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #45a29e;
+    text-align: center;
+    color: #66fcf1;
+}
+
+.btn-clear {
+    padding: 9px 14px;
+    font-size: 12px;
+    background: transparent;
+    color: #dc2743;
+    border: 1px solid #dc2743;
+}
+
+.btn-clear:hover {
+    background: #dc2743;
+    color: #ffffff;
+}
+
+.btn-tab {
+    padding: 10px 20px;
+    background: transparent;
+    color: #c5c6c7;
+    border: 1px solid #45a29e;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-tab.active {
+    background: #45a29e;
+    color: #0b0c10;
+}
+
+.btn-tab:hover {
+    background: #66fcf1;
+    color: #0b0c10;
+}
+
+.categoria-activa {
+    display: grid;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.search-feedback {
+    margin-top: 10px;
+    color: #ff6b81;
+    font-size: 14px;
+    text-align: left;
+}
+
+.product-img-gif {
+    width: 100%;
+    height: 140px;
+    object-fit: cover; /* Asegura que la imagen no se deforme */
+    border-radius: 12px;
+    margin-bottom: 18px;
+    border: 1px solid #45a29e;
+    
+    /* Animación extra: hace que la imagen flote suavemente */
+    animation: flotar 4s ease-in-out infinite;
+}
+
+/* Creamos la animación de flotar usando CSS */
+@keyframes flotar {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* =========================================
+   ⚡ EFECTOS DINÁMICOS Y ANIMACIONES ⚡
+   ========================================= */
+
+/* 1. Animación de entrada: La tienda aparece deslizándose hacia arriba */
+@keyframes slideUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(50px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+#store-section:not(.hidden) {
+    animation: slideUp 0.6s ease-out forwards;
+}
+
+/* 2. Efecto de Pulso Neón para los botones principales */
+@keyframes neonPulse {
+    0% { box-shadow: 0 0 5px #66fcf1; }
+    50% { box-shadow: 0 0 20px #66fcf1, 0 0 30px #45a29e; }
+    100% { box-shadow: 0 0 5px #66fcf1; }
+}
+
+.btn-neon {
+    animation: neonPulse 2s infinite; /* El botón palpita constantemente */
+}
+
+/* 3. Efecto "Glitch" interactivo en los títulos */
+.glitch-text {
+    transition: 0.3s;
+}
+
+.glitch-text:hover {
+    animation: glitchShake 0.3s infinite;
+    color: #ff003c; /* Cambia a rojo láser al pasar el mouse */
+    text-shadow: 3px 0px #00e6fe, -3px 0px #ff003c;
+    cursor: crosshair; /* Cambia el cursor a una mira de shooter */
+}
+
+@keyframes glitchShake {
+    0% { transform: translate(2px, 0); }
+    25% { transform: translate(-2px, 2px); }
+    50% { transform: translate(0, -2px); }
+    75% { transform: translate(2px, 2px); }
+    100% { transform: translate(-2px, 0); }
+}
+
+/* 4. Mejora del Hover (interacción) en las tarjetas de productos */
+.product-card {
+    /* Hacemos que el movimiento sea súper elástico y suave */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.product-card:hover {
+    transform: scale(1.08) translateY(-10px); /* La tarjeta hace zoom y flota hacia arriba */
+    box-shadow: 0 15px 30px rgba(102, 252, 241, 0.4);
+    border-color: #66fcf1;
+}
+
+/* 5. Efecto de rebote al pasar el mouse por los iconos de redes sociales */
+.btn-social {
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.btn-social:hover {
+    transform: scale(1.3) rotate(10deg);
+}
+
+.about-section {
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 900px;
+    z-index: 1;
+}
+
+.about-card {
+    background: rgba(15, 23, 34, 0.95);
+    border: 1px solid #45a29e;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 0 20px rgba(69, 162, 158, 0.35);
+    text-align: left;
+}
+
+.about-card h2 {
+    color: #66fcf1;
+    margin-bottom: 12px;
+}
+
+.about-card p {
+    color: #c5c6c7;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.vision-mision {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.vision-mision .box {
+    background: rgba(11, 12, 16, 0.9);
+    border: 1px solid #66fcf1;
+    border-radius: 12px;
+    padding: 18px;
+}
+
+.vision-mision h3 {
+    color: #66fcf1;
+    margin-bottom: 10px;
+}
+
+.vision-mision p {
+    color: #c5c6c7;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.about-photo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
+.photo-placeholder {
+    width: 150px;
+    height: 150px;
+    border: 2px dashed #66fcf1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c5c6c7;
+    font-size: 13px;
+    padding: 12px;
+    text-align: center;
+    background: rgba(10, 14, 21, 0.8);
+}
+
+.btn-recover {
+    margin: 0 auto 20px;
+    display: inline-block;
+    font-size: 14px;
+    padding: 12px 18px;
+    border-color: #f5b642;
+    color: #f5b642;
+}
+
+.btn-recover:hover {
+    background: #f5b642;
+    color: #0b0c10;
+    box-shadow: 0 0 12px rgba(245, 182, 66, 0.6);
+}
+
+@media (max-width: 760px) {
+    .vision-mision {
+        grid-template-columns: 1fr;
+    }
+}
