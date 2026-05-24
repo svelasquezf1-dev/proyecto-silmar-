@@ -1,3 +1,4 @@
+// SCRIPT DE GAMER STORE
 // Referencias a las pantallas
 const loginSection = document.getElementById('login-section');
 const storeSection = document.getElementById('store-section');
