@@ -6,8 +6,13 @@ const aboutSection = document.getElementById('about-section');
 const cart = [];
 
 function iniciarSesion() {
-    const usuarioIngresado = document.getElementById('username').value;
-    const passwordIngresado = document.getElementById('password').value;
+    const usuarioIngresado = document.getElementById('username').value.trim();
+    const passwordIngresado = document.getElementById('password').value.trim();
+
+    if (!usuarioIngresado || !passwordIngresado) {
+        alert("❌ Por favor, ingresa usuario y contraseña.");
+        return;
+    }
 
     const cuenta1 = { user: "silmar", pass: "1234" };
 
@@ -15,10 +20,17 @@ function iniciarSesion() {
         loginSection.classList.add('hidden');
         storeSection.classList.remove('hidden');
         aboutSection.classList.add('hidden');
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
         
         // 🔊 SONIDO DE INICIO DE SESIÓN
-        const sonidoLogin = new Audio('https://www.myinstants.com/media/sounds/xbox-360-achievement-sound.mp3');
-        sonidoLogin.play();
+        try {
+            const sonidoLogin = new Audio('https://www.myinstants.com/media/sounds/xbox-360-achievement-sound.mp3');
+            sonidoLogin.volume = 0.3;
+            sonidoLogin.play();
+        } catch (e) {
+            console.log('No se pudo reproducir sonido');
+        }
         
     } else {
         alert("❌ ACCESO DENEGADO: Usuario o contraseña incorrectos.");
@@ -36,6 +48,11 @@ function cerrarSesion() {
     storeSection.classList.add('hidden');
     loginSection.classList.remove('hidden');
     aboutSection.classList.remove('hidden');
+    cart.length = 0;
+    renderCarrito();
+    document.getElementById('search').value = '';
+    // Mostrar periferico al cerrar sesión
+    mostrarCategoria('perifericos');
     alert("Sesión cerrada.");
 }
 
@@ -48,11 +65,11 @@ function recuperarCuenta() {
     alert(`Se ha enviado un enlace de recuperación al correo ${email}. Revisa tu bandeja de entrada.`);
 }
 
-function mostrarCategoria(event, categoria) {
+function mostrarCategoria(evento, categoria) {
     // Si el primer argumento es string (nombre de categoría), ajustarlo
-    if (typeof event === 'string') {
-        categoria = event;
-        event = null;
+    if (typeof evento === 'string') {
+        categoria = evento;
+        evento = null;
     }
     
     // Ocultar todas las categorías
@@ -66,12 +83,15 @@ function mostrarCategoria(event, categoria) {
     document.getElementById('licencias').classList.add('hidden');
     
     // Mostrar la categoría seleccionada
-    document.getElementById(categoria).classList.remove('hidden');
+    const categoryElement = document.getElementById(categoria);
+    if (categoryElement) {
+        categoryElement.classList.remove('hidden');
+    }
     
-    // Actualizar botones activos si hay event
-    if (event && event.target) {
+    // Actualizar botones activos si hay evento
+    if (evento && evento.target) {
         document.querySelectorAll('.btn-tab').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
+        evento.target.classList.add('active');
     }
 
     // Reset search when changing category
@@ -84,14 +104,13 @@ function buscarProductos() {
     const feedback = document.getElementById('search-feedback');
     let visibleCount = 0;
 
-    // Buscar solo en la categoría activa (excluyendo most-viewed)
-    const activeCategory = document.querySelector('.store-nav').nextElementSibling;
-    let searchContainer = document.querySelector('#perifericos');
+    // Buscar solo en la categoría activa
+    const allGrids = document.querySelectorAll('.products-grid');
+    let searchContainer = null;
     
     // Encontrar el grid que NO está hidden
-    const allGrids = document.querySelectorAll('.products-grid');
     allGrids.forEach(grid => {
-        if (!grid.classList.contains('hidden') && !grid.parentElement.classList.contains('most-viewed')) {
+        if (!grid.classList.contains('hidden')) {
             searchContainer = grid;
         }
     });
@@ -118,16 +137,27 @@ function buscarProductos() {
 
 function interactuarProducto(nombreProducto) {
     // 🔊 SONIDO DE COMPRA / EQUIPAR
-    const sonidoComprar = new Audio('https://www.myinstants.com/media/sounds/level-up.mp3');
-    sonidoComprar.play();
+    try {
+        const sonidoComprar = new Audio('https://www.myinstants.com/media/sounds/level-up.mp3');
+        sonidoComprar.volume = 0.3;
+        sonidoComprar.play();
+    } catch (e) {
+        console.log('No se pudo reproducir sonido');
+    }
     
-    // Extraer precio del elemento
-    const productCard = event.target.closest('.product-card');
-    const priceText = productCard.querySelector('p').textContent;
-    const price = parseFloat(priceText.replace('$', ''));
+    // Encontrar el producto card más cercano
+    const productCard = document.querySelector(`[data-name="${nombreProducto}"]`);
     
-    cart.push({ name: nombreProducto, price: price });
-    renderCarrito();
+    if (productCard) {
+        const priceText = productCard.querySelector('p').textContent;
+        const price = parseFloat(priceText.replace('$', ''));
+        
+        cart.push({ name: nombreProducto, price: price });
+        renderCarrito();
+        
+        // Feedback visual
+        alert(`✅ ${nombreProducto} añadido al carrito!`);
+    }
 }
 
 function renderCarrito() {
@@ -145,7 +175,7 @@ function renderCarrito() {
     let total = 0;
     cart.forEach((item, index) => {
         const listItem = document.createElement('li');
-        listItem.textContent = `${index + 1}. ${item.name} - $${item.price.toFixed(2)}`;
+        listItem.innerHTML = `${index + 1}. ${item.name} - $${item.price.toFixed(2)} <button class="btn-remove" onclick="eliminarDelCarrito(${index})">❌</button>`;
         list.appendChild(listItem);
         total += item.price;
     });
@@ -158,9 +188,19 @@ function renderCarrito() {
     cartContainer.appendChild(totalDiv);
 }
 
+function eliminarDelCarrito(index) {
+    cart.splice(index, 1);
+    renderCarrito();
+}
+
 function vaciarCarrito() {
+    if (cart.length === 0) {
+        alert("El carrito ya está vacío.");
+        return;
+    }
     cart.length = 0;
     renderCarrito();
+    alert("Carrito vaciado.");
 }
 
 function comprar() {
@@ -169,6 +209,6 @@ function comprar() {
         return;
     }
     const total = cart.reduce((sum, item) => sum + item.price, 0);
-    alert(`Compra realizada por un total de $${total.toFixed(2)}. ¡Gracias por tu compra!`);
+    alert(`✅ Compra realizada por un total de $${total.toFixed(2)}. ¡Gracias por tu compra!`);
     vaciarCarrito();
 }
