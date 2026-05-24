@@ -10,18 +10,18 @@
 </head>
 <body>
     <div class="background-layer">
-        <img src="../img/oip0.webp" alt="Fondo gamer" class="bg-item bg1">
-        <img src="../img/oip1.webp" alt="Fondo consola" class="bg-item bg2">
-        <img src="../img/setup.jpg" alt="Fondo setup" class="bg-item bg3">
-        <img src="../img/mouse.png" alt="Fondo mouse" class="bg-item bg4">
-        <img src="../img/oip10.webp" alt="Fondo licencias" class="bg-item bg5">
+        <img src="img/oip0.webp" alt="Fondo gamer" class="bg-item bg1">
+        <img src="img/oip1.webp" alt="Fondo consola" class="bg-item bg2">
+        <img src="img/setup.jpg" alt="Fondo setup" class="bg-item bg3">
+        <img src="img/mouse.png" alt="Fondo mouse" class="bg-item bg4">
+        <img src="img/oip10.webp" alt="Fondo licencias" class="bg-item bg5">
     </div>
 
     <section id="about-section" class="about-section">
         <div class="about-card">
             <h2>Bienvenido a Gamer Store</h2>
             <div class="about-photo">
-                <div class="photo-placeholder">Tu foto personal aquí</div>
+                <img src="img/WhatsApp Image 2026-05-23 at 19.14.15.jpeg" alt="Tu foto personal aquí" class="product-img-gif">
             </div>
             <p>Somos una pequeña tienda especializada en productos electrónicos para computadoras. Brindamos asesoría cercana, calidad y soluciones para gamers, técnicos y usuarios que buscan un equipo confiable.</p>
             <div class="vision-mision">
@@ -52,12 +52,17 @@
         
         <div class="social-login">
             <button class="btn-social fb" onclick="iniciarSesionRedes('Facebook')"><i class="fab fa-facebook-f"></i></button>
-            <button class="btn-social x" onclick="iniciarSesionRedes('X')"><i class="fab fa-x-twitter"></i></button>
+            <button class="btn-social x" onclick="iniciarSesionRedes('X')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <path d="M3 3L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M21 3L3 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
             <button class="btn-social ig" onclick="iniciarSesionRedes('Instagram')"><i class="fab fa-instagram"></i></button>
         </div>
     </div>
     <div id="store-section" class="container hidden">
-        <h1 class="glitch-text">ARMERÍA VIRTUAL</h1>
+        <h1 class="glitch-text">STORE TIME GAME</h1>
         <button class="btn-neon btn-logout" onclick="cerrarSesion()">Cerrar Sesión</button>
         
         <input type="text" id="search" placeholder="Buscar productos..." onkeyup="buscarProductos()" class="search-input">
@@ -87,19 +92,19 @@
         
         <div id="perifericos" class="products-grid categoria-activa">
             <div class="product-card" onclick="interactuarProducto('Teclado Mecánico RGB')" data-name="Teclado Mecánico RGB">
-                <img src="../img/oip0.webp" alt="Teclado" class="product-img-gif">
+                <img src="img/oip0.webp" alt="Teclado" class="product-img-gif">
                 <h3>Teclado RGB</h3>
                 <p>$120.00</p>
                 <button class="btn-buy">Equipar</button>
             </div>
             <div class="product-card" onclick="interactuarProducto('Mouse Láser 10000 DPI')" data-name="Mouse Láser 10000 DPI">
-                <img src="../img/mouse.png" alt="Mouse" class="product-img-gif">
+                <img src="img/mouse.png" alt="Mouse" class="product-img-gif">
                 <h3>Mouse Láser</h3>
                 <p>$85.00</p>
                 <button class="btn-buy">Equipar</button>
             </div>
             <div class="product-card" onclick="interactuarProducto('Pad Gamer RGB')" data-name="Pad Gamer RGB">
-                <img src="../img/OIP.webp" alt="Pad Gamer" class="product-img-gif">
+                <img src="img/OIP.webp" alt="Pad Gamer" class="product-img-gif">
                 <h3>Pad Gamer</h3>
                 <p>$35.00</p>
                 <button class="btn-buy">Equipar</button>
@@ -108,13 +113,13 @@
 
         <div id="consolas" class="products-grid hidden">
             <div class="product-card" onclick="interactuarProducto('PlayStation 5')" data-name="PlayStation 5">
-                <img src="../img/oip1.webp" alt="PlayStation 5" class="product-img-gif">
+                <img src="img/oip1.webp" alt="PlayStation 5" class="product-img-gif">
                 <h3>PlayStation 5</h3>
                 <p>$500.00</p>
                 <button class="btn-buy">Equipar</button>
             </div>
             <div class="product-card" onclick="interactuarProducto('Setup Completo')" data-name="Setup Completo">
-                <img src="../img/setup.jpg" alt="Setup" class="product-img-gif">
+                <img src="img/setup.jpg" alt="Setup" class="product-img-gif">
                 <h3>Setup Elite</h3>
                 <p>$550.00</p>
                 <button class="btn-buy">Equipar</button>
@@ -123,19 +128,19 @@
 
         <div id="monitores" class="products-grid hidden">
             <div class="product-card" onclick="interactuarProducto('Monitor 4K 27 pulgadas')" data-name="Monitor 4K 27 pulgadas">
-                <img src="../img/oip2.webp" alt="Monitor" class="product-img-gif">
+                <img src="img/oip2.webp" alt="Monitor" class="product-img-gif">
                 <h3>Monitor 4K</h3>
                 <p>$300.00</p>
                 <button class="btn-buy">Equipar</button>
             </div>
             <div class="product-card" onclick="interactuarProducto('Monitor Gaming 144Hz')" data-name="Monitor Gaming 144Hz">
-                <img src="../img/oip3.webp" alt="Monitor Gaming" class="product-img-gif">
+                <img src="img/oip3.webp" alt="Monitor Gaming" class="product-img-gif">
                 <h3>Monitor Gaming</h3>
                 <p>$250.00</p>
                 <button class="btn-buy">Equipar</button>
             </div>
             <div class="product-card" onclick="interactuarProducto('Monitor UltraWide')" data-name="Monitor UltraWide">
-                <img src="../img/oip8.webp" alt="Monitor UltraWide" class="product-img-gif">
+                <img src="img/OIP (5).webp" alt="Monitor UltraWide" class="product-img-gif">
                 <h3>Monitor UltraWide</h3>
                 <p>$420.00</p>
                 <button class="btn-buy">Equipar</button>
@@ -144,13 +149,13 @@
 
         <div id="laptops" class="products-grid hidden">
             <div class="product-card" onclick="interactuarProducto('Laptop Gaming RTX 4070')" data-name="Laptop Gaming RTX 4070">
-                <img src="../img/oip4.webp" alt="Laptop" class="product-img-gif">
+                <img src="img/oip4.webp" alt="Laptop" class="product-img-gif">
                 <h3>Laptop Gaming</h3>
                 <p>$1200.00</p>
                 <button class="btn-buy">Equipar</button>
             </div>
             <div class="product-card" onclick="interactuarProducto('Laptop Ultraportátil')" data-name="Laptop Ultraportátil">
-                <img src="../img/oip5.webp" alt="Laptop" class="product-img-gif">
+                <img src="img/OIP (3).webp" alt="Laptop" class="product-img-gif">
                 <h3>Laptop Ultraportátil</h3>
                 <p>$900.00</p>
                 <button class="btn-buy">Equipar</button>
@@ -159,13 +164,13 @@
 
         <div id="memorias" class="products-grid hidden">
             <div class="product-card" onclick="interactuarProducto('Tarjeta de Memoria 32GB DDR4')" data-name="Tarjeta de Memoria 32GB DDR4">
-                <img src="../img/oip5.webp" alt="RAM" class="product-img-gif">
+                <img src="img/oip5.webp" alt="RAM" class="product-img-gif">
                 <h3>RAM 32GB</h3>
                 <p>$150.00</p>
                 <button class="btn-buy">Equipar</button>
             </div>
             <div class="product-card" onclick="interactuarProducto('SSD NVMe 1TB')" data-name="SSD NVMe 1TB">
-                <img src="../img/oip7.webp" alt="SSD" class="product-img-gif">
+                <img src="img/R.jpg" alt="SSD" class="product-img-gif">
                 <h3>SSD NVMe 1TB</h3>
                 <p>$120.00</p>
                 <button class="btn-buy">Equipar</button>
@@ -174,13 +179,13 @@
 
         <div id="ventiladores" class="products-grid hidden">
             <div class="product-card" onclick="interactuarProducto('Ventilador de Aspas RGB')" data-name="Ventilador de Aspas RGB">
-                <img src="../img/oip6.webp" alt="Fan" class="product-img-gif">
+                <img src="img/oip6.webp" alt="Fan" class="product-img-gif">
                 <h3>Fan RGB</h3>
                 <p>$50.00</p>
                 <button class="btn-buy">Equipar</button>
             </div>
             <div class="product-card" onclick="interactuarProducto('Refrigeración Líquida 240mm')" data-name="Refrigeración Líquida 240mm">
-                <img src="../img/oip7.webp" alt="Liquid Cooler" class="product-img-gif">
+                <img src="img/oip7.webp" alt="Liquid Cooler" class="product-img-gif">
                 <h3>Liquid Cooler</h3>
                 <p>$100.00</p>
                 <button class="btn-buy">Equipar</button>
@@ -189,13 +194,13 @@
 
         <div id="placas" class="products-grid hidden">
             <div class="product-card" onclick="interactuarProducto('Placa Madre ATX Gaming')" data-name="Placa Madre ATX Gaming">
-                <img src="../img/oip1.webp" alt="Motherboard" class="product-img-gif">
+                <img src="img/oip8.webp" alt="Motherboard" class="product-img-gif">
                 <h3>Motherboard Gaming</h3>
                 <p>$200.00</p>
                 <button class="btn-buy">Equipar</button>
             </div>
             <div class="product-card" onclick="interactuarProducto('Placa Madre Mini-ITX')" data-name="Placa Madre Mini-ITX">
-                <img src="../img/oip0.webp" alt="Motherboard MiniITX" class="product-img-gif">
+                <img src="img/OIP (1).webp" alt="Motherboard MiniITX" class="product-img-gif">
                 <h3>Mini-ITX</h3>
                 <p>$180.00</p>
                 <button class="btn-buy">Equipar</button>
@@ -204,20 +209,25 @@
 
         <div id="licencias" class="products-grid hidden">
             <div class="product-card" onclick="interactuarProducto('Licencia Windows 11 Pro')" data-name="Licencia Windows 11 Pro">
-                <img src="../img/oip9.webp" alt="Windows" class="product-img-gif">
+                <img src="img/oip9.webp" alt="Windows" class="product-img-gif">
                 <h3>Windows 11 Pro</h3>
                 <p>$150.00</p>
                 <button class="btn-buy">Equipar</button>
             </div>
             <div class="product-card" onclick="interactuarProducto('Licencia Adobe Creative Suite')" data-name="Licencia Adobe Creative Suite">
-                <img src="../img/oip2.webp" alt="Adobe" class="product-img-gif">
+                <img src="img/1OIP.webp" alt="Adobe" class="product-img-gif">
                 <h3>Adobe Suite</h3>
                 <p>$500.00</p>
                 <button class="btn-buy">Equipar</button>
             </div>
         </div>
     </div>
-    
-<script src="script.js"></script>
+
+    <footer class="site-footer">
+        <p>Esta página está dedicada a la diversión propia, para el mundo</p>
+        <div class="footer-base">&copy; 2026 STORE TIME GAME &middot; Silmar Velásquez &middot; Universidad Mariano Gálvez de Guatemala</div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
